@@ -2,7 +2,7 @@
 
 ================
 
-This crate manager is a command-line utility that helps you create and manage Rust projects with specific dependencies. It uses the `clap` crate for command-line parsing and `serde` for data serialization.
+This crate manager is a command-line utility that helps you create and manage Rust projects with specific dependencies. It uses the `clap` crate for command-line parsing.
 
 ## Usage
 
