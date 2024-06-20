@@ -7,7 +7,7 @@ homepage = "https://github.com/nobel-von-it/inirs.git"
 repository = "https://github.com/nobel-von-it/inirs.git"
 readme = "README.md"
 categories = ["command-line-utilities"]
-version = "0.1.5"
+version = "0.1.6"
 edition = "2021"
 
 
