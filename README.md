@@ -14,83 +14,37 @@ This crate manager is a command-line utility that helps you create and manage Ru
 
 The directory where the new project will be created. Defaults to `/home/nerd/Dev/Rusty/`. This is my personal project directory.
 
-#### `crate_name`
+#### `name`
 
 The name of the new crate.
 
 #### `crates`
 
-A comma-separated list of crates to add to the project.
+A list of crates to add to the project, separated by spaces.
 
 ### Example
 
 ```bash
-inirs --dir /path/to/project --crate-name my_crate --crates clap,serde,serde_json
+inirs --dir /path/to/project --name clap serde serde_json ...
 ```
 
 ### Crate Options
 
 ---
 
-The following crates are supported:
-
-#### `clap`
-
-Adds the `clap` crate for command-line parsing.
-
-#### `serde`
-
-Adds the `serde` crate for data serialization.
-
-#### `serde_json`
-
-Adds the `serde_json` crate for JSON serialization.
-
-#### `ratatui`
-
-Adds the `ratatui` crate for terminal user interfaces.
-
-#### `crossterm`
-
-Adds the `crossterm` crate for cross-platform terminal handling.
-
-#### `whoami`
-
-Adds the `whoami` crate for user information.
-
-#### `anyhow`
-
-Adds the `anyhow` crate for error handling.
-
-#### `rand`
-
-Adds the `rand` crate for random number generation.
-
-### Scripts
+## Supported Libraries
 
 ---
 
-The following scripts are added to the project:
+Currently, full snippets are supported only for the following libraries:
 
-#### `clap`
+- **Ratatui**: A Rust library for building terminal user interfaces.
+- **Crossterm**: A cross-platform terminal handling library.
+- **Clap**: A command-line argument parser.
+- **Serde**: A serialization and deserialization library.
+- **Tokio**: An asynchronous runtime for Rust.
 
-Adds a basic `clap` script for command-line parsing.
-
-#### `serde`
-
-Adds a basic `serde` script for data serialization.
-
-#### `ratatui`
-
-Adds a basic `ratatui` script for terminal user interfaces.
-
-#### `crossterm`
-
-Adds a basic `crossterm` script for cross-platform terminal handling.
-
-#### `main`
-
-Adds a basic `main` script for the project.
+All other libraries will be added in the future, but for now, only these libraries have comprehensive snippet support.
 
 ### Project Structure
 
