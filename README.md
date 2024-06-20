@@ -4,6 +4,31 @@
 
 This crate manager is a command-line utility that helps you create and manage Rust projects with specific dependencies. It uses the `clap` crate for command-line parsing.
 
+## Installation
+
+### Git Clone
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/nobel-von-it/inirs.git
+   ```
+2. Change into the directory:
+   ```
+   cd inirs
+   ```
+3. Build and run the application:
+   ```
+   cargo build --release
+   target/release/inirs <options>
+   ```
+
+### Cargo install
+
+1. Install the `inirs` package:
+   ```
+   cargo install inirs
+   ```
+
 ## Usage
 
 ---
