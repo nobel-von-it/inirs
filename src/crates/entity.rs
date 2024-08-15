@@ -1,22 +1,6 @@
-use std::io::Write;
-
+use crate::helpers::*;
 use anyhow::anyhow;
-
-use crate::{
-    helpers::{create_snippets, get_crate_link},
-    opt::CrateOption,
-    snippets,
-};
-
-pub struct Features(Vec<String>);
-// impl From<CrateName> for Features {
-//     fn from(cn: CrateName) -> Self {
-//     let mut features = vec![];
-//         match cn {
-//             CrateName::Clap =>
-//         }
-//     }
-// }
+use std::io::Write;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum CrateName {
@@ -57,65 +41,6 @@ impl From<String> for CrateName {
         }
     }
 }
-pub struct Paths {
-    pub dir: String,
-    pub main: String,
-    pub config: String,
-    pub config_file: String,
-}
-impl Paths {
-    fn new(dir: String, config: String, config_file: String) -> Self {
-        let main = format!("{}/src/main.rs", &dir);
-        Self {
-            dir,
-            main,
-            config,
-            config_file,
-        }
-    }
-}
-pub struct CratesInfo {
-    pub paths: Paths,
-    pub crates: Vec<Crate>,
-    pub is_cross: bool,
-    pub is_rat: bool,
-    pub is_tokio: bool,
-}
-impl CratesInfo {
-    // pub fn new(args: &[String], path: String) -> Self {
-    //     let args = Args::parse();
-    //     let mut is_cross = false;
-    //     let mut is_rat = false;
-    //     let mut is_tokio = false;
-    //
-    //     let crate_options = CrateOptions::load_from_file(jkk, config_name)
-    //     let crates = args
-    //         .iter()
-    //         .map(|c| {
-    //             let cl = c.to_lowercase();
-    //             if cl == "ratatui" {
-    //                 is_rat = true;
-    //             }
-    //             if cl == "crossterm" {
-    //                 is_cross = true;
-    //             }
-    //             if cl == "tokio" {
-    //                 is_tokio = true;
-    //             }
-    //             Crate::from(CrateOptions::get_crate(&self, name))
-    //         })
-    //         .collect::<Vec<_>>();
-    //     Self {
-    //         path_to_crate: path,
-    //         path_to_main,
-    //         crates,
-    //         is_cross,
-    //         is_rat,
-    //         is_tokio,
-    //     }
-    // }
-}
-
 #[derive(Debug)]
 pub struct Crate {
     pub name: CrateName,
@@ -161,7 +86,7 @@ impl From<CrateOption> for Crate {
         };
         Self {
             name: CrateName::from(co.name.as_str()),
-            features: co.features.map(|f| f),
+            features: co.features,
             link: if let Some(link) = co.link {
                 link
             } else {

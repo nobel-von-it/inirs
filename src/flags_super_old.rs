@@ -7,40 +7,10 @@ use crate::{
     opt::{CrateOption, CrateOptions},
 };
 
-#[derive(Subcommand, Debug)]
-pub enum Actions {
-    Add {
-        name: String,
-        #[clap(short, long, default_value = None)]
-        link: Option<String>,
-        #[clap(short, long, default_value = None)]
-        path_to_snippets: Option<String>,
-        #[clap(default_value = None)]
-        features: Option<Vec<String>>,
-    },
-    CreateSnippet {
-        path_to_snippets: String,
-    },
-    Do {
-        #[clap(short, long, default_value = "./")]
-        dir_path: String,
-        #[clap(short, long, required = true)]
-        name: String,
-        #[clap(short, long, default_value = "false")]
-        is_lib: bool,
-        #[clap(short, long, default_value = "false")]
-        add_link: bool,
-        #[clap(short, long, default_value = "false")]
-        build: bool,
-        #[clap(default_value = None)]
-        crates: Option<Vec<String>>,
-    },
-}
-
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
 pub struct Args {
-    #[clap(long, default_value = "~/.config/inirs/")]
+    #[clap(long, default_value = "/home/nerd/.config/inirs/")]
     pub config_path: String,
     #[clap(long, default_value = "config.json")]
     pub config_name: String,
@@ -79,6 +49,7 @@ impl Args {
                 }),
             }
         }
+        crate_options.save_to_file(&self.config_path, &self.config_name);
     }
     pub fn create_snippet_action(&self) {
         if let Some(Actions::CreateSnippet { path_to_snippets }) = &self.action {
